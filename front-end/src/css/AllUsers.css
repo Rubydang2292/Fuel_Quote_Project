@@ -1,0 +1,81 @@
+header #hero{
+	margin-top: 125px;
+}
+
+#users-info{
+
+	border: 1px solid #f2f2f2 ;
+	border-radius: 5px;
+	box-shadow: 0px 27px 43px rgb(32, 94, 171, 0.4);
+}
+
+#form-name h2 {
+	text-align: center;
+	font-family: overpas-extraBold;
+	font-size: 20px;
+	line-height: 24px;
+	border: 1px solid #009c04;
+	color: white;
+	padding-top: 23px;
+	padding-bottom: 23px;
+	padding-left: 22px;
+	background-color: #009c04 ;
+	border-radius: 5px 5px 0px 0px ;
+
+}
+
+#information{
+	background-color: #f2f2f2;
+	padding: 30px 30px 30px 30px;
+
+}
+
+table{
+	table-layout: fixed;
+	width: 100%;
+	border-collapse: collapse;
+	display: inline-block;
+	max-height: 500px;
+	overflow: scroll;
+}
+
+td {
+	text-align: center;
+}
+
+
+th.customer-name {
+	width: 30%;
+	border: 1px solid #006b03; 
+
+}
+th.customer-email {
+	width: 30%;
+	border: 1px solid #006b03; 
+}
+
+th.customer-address {
+	width: 500px;
+	border: 1px solid #006b03; 
+}
+
+#table th,td{
+	padding: 10px;
+}
+
+.users-labels{
+	position: sticky;
+	top: 0px;
+	background-color: #009c04;
+	color: white;
+	height: 50px;
+}
+
+.users-labels > tr > th{
+	font-family: poppins-medium;
+}
+
+.users-items td {
+	font-family: poppins-regular;
+	text-align: center;
+}
