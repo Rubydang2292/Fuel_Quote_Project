@@ -118,6 +118,7 @@ export default function UserProfileItem({ user }) {
                       id="name"
                       name="name"
                       placeholder="Enter Name"
+                      maxLength="50"
                       value={userToEdit.name}
                       onChange={(e) =>
                         setUserToEdit({ ...userToEdit, name: e.target.value })
@@ -133,6 +134,7 @@ export default function UserProfileItem({ user }) {
                       id="address1"
                       name="address1"
                       placeholder="Enter Address 1"
+                      maxLength="100"
                       value={userToEdit.address1}
                       onChange={(e) =>
                         setUserToEdit({
@@ -151,6 +153,7 @@ export default function UserProfileItem({ user }) {
                       id="address2"
                       name="address2"
                       placeholder="Enter Address 2"
+                      maxLength="100"
                       value={userToEdit.address2}
                       onChange={(e) =>
                         setUserToEdit({
@@ -169,6 +172,7 @@ export default function UserProfileItem({ user }) {
                         id="city"
                         name="city"
                         placeholder="Enter City"
+                        maxLength="100"
                         required
                         value={userToEdit.city}
                         onChange={(e) =>
