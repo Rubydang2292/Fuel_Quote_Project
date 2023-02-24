@@ -258,7 +258,7 @@ export default function UserProfileItem({ user }) {
                         name="zipcode"
                         placeholder="Enter Zip code"
                         minLength="5"
-                        maxLength="5"
+                        maxLength="9"
                         required
                         value={userToEdit.zipcode}
                         onChange={(e) =>
