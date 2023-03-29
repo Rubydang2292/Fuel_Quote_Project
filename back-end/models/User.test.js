@@ -7,7 +7,6 @@ describe('User model', () => {
   beforeAll(async () => {
     await mongoose.connect(process.env.DB_URI || 'mongodb://localhost/test', {
       useNewUrlParser: true,
-      useCreateIndex: true,
       useUnifiedTopology: true,
     });
   });

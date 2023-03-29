@@ -116,12 +116,15 @@ describe('quoteController', () => {
       ];
       Quote.find.mockResolvedValue(quotes);
 
-    //   await quoteController.getUserQuotes(req, res);
+      await quoteController.getUserQuotes(req, res);
 
-    //   expect(Quote.find).toHaveBeenCalledWith({ author: 'user-id' });
-    //   expect(res.status).
-
-
+      expect(Quote.find).toHaveBeenCalledWith({ author: 'user-id' });
+      expect(res.status).toHaveBeenCalledWith(200);
+      expect(res.json).toHaveBeenCalledWith({
+        status: 'Success',
+        results: quotes.length,
+        data: { quotes },
+      });
     });
   });
 });

@@ -117,11 +117,26 @@ describe('authController', () => {
       });
     });
 
-    // it('should return an error if email is not correct', async () => {
-    //   const req = {
-    //     body: {
-    //       email: 'john@example.com',
-    //       password: 'password',
-    //     },
-     
+    it('should return an error if email is not correct', async () => {
+      const req = {
+        body: {
+          email: 'john@example.com',
+          password: 'password',
+        },
+      };
+      const res = {
+        status: jest.fn().mockReturnThis(),
+        json: jest.fn(),
+      };
+
+      User.findOne.mockResolvedValue(null);
+
+      const next = jest.fn();
+
+      await authController.login(req, res, next);
+
+      const error = new Error('Email is not correct');
+      expect(next).toHaveBeenCalledWith(error);
+    });
+  });
 });

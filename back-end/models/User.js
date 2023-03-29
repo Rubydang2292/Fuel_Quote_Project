@@ -7,20 +7,21 @@ const userSchema = new mongoose.Schema({
     type: String,
     unique: true,
     trim: true,
-    required: [true, "Name must be required"],
+    required: [true, "Name is required"],
+    maxlength: [50, "Name must have a maximum of 50 characters"],
   },
 
   email: {
     type: String,
     unique: true,
     trim: true,
-    required: [true, "Email must be required"],
+    required: [true, "Email is required"],
   },
 
   password: {
     type: String,
     trim: true,
-    required: [true, "Password must be required"],
+    required: [true, "Password is required"],
     minlength: [6, "Password must be at least 6 characters"],
   },
 
@@ -28,18 +29,21 @@ const userSchema = new mongoose.Schema({
     type: String,
     trim: true,
     default: "",
+    maxlength: [100, "Address1 must have a maximum of 100 characters"],
   },
 
   address2: {
     type: String,
     trim: true,
     default: "",
+    maxlength: [100, "Address2 must have a maximum of 100 characters"],
   },
 
   city: {
     type: String,
     trim: true,
     default: "",
+    maxlength: [100, "City must have a maximum of 100 characters"],
   },
 
   state: {
@@ -52,12 +56,14 @@ const userSchema = new mongoose.Schema({
     type: Number,
     trim: true,
     default: "",
+    minlength: [5, "Zipcode must be at least 5 characters"],
+    maxlength: [9, "Zipcode must have a maximum of 9 characters"],
   },
 
-  isAdmin: {
-    type: String,
-    trim: true,
-  },
+  // isAdmin: {
+  //   type: String,
+  //   trim: true,
+  // },
 });
 
 // Hash password:
