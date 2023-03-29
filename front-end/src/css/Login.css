@@ -17,12 +17,12 @@
 	font-family: overpas-extraBold;
 	font-size: 20px;
 	line-height: 24px;
-	border: 1px solid #c04ae2;
+	border: 1px solid #009c04;
 	color: white;
 	padding-top: 23px;
 	padding-bottom: 23px;
 	padding-left: 22px;
-	background-color: #c04ae2 ;
+	background-color: #009c04 ;
 	border-radius: 5px 5px 0px 0px ;
 
 }
@@ -92,8 +92,8 @@
 	font-family: poppins-medium;
 	font-size: 18px;
 	line-height: 26px;
-	border: 1px solid #c04ae2;
-	background-color: #c04ae2;
+	border: 1px solid #009c04;
+	background-color: #009c04;
 	color: white;
 	border-radius: 5px;
 	padding: 11px 220px;
@@ -103,7 +103,7 @@
 }
 
 #login-form #id-password-submit #signin button:hover{
-	background-color: #a425c8;
+	background-color: #009c04;
 	transform: translateY(3px);
 }
 
@@ -134,7 +134,7 @@
 	font-size: 18px;
 	line-height: 26px;
 	margin-top: 20px;
-	border-bottom: 1px solid #c04ae2 ;
+	border-bottom: 1px solid #009c04 ;
 }
 
 

@@ -6,14 +6,15 @@ export default function FuelQuoteItem({ user }) {
   const { state, dispatch } = useContext(AppContext);
   const { quotes } = state;
 
-  // Function to get all Quotes
+  // function to request to get all Quotes
   const getAllQuotes = useCallback(async () => {
     try {
       const options = {
-        method: "get",
+        method: "get", // must be method get
         url: "/api/v1/quotes/quoteHistory",
       };
 
+      // after succesfully requested, data will be saved into response
       const response = await axios(options);
 
       const quotes = response.data.data.quotes;
@@ -33,6 +34,7 @@ export default function FuelQuoteItem({ user }) {
     getAllQuotes();
   }, [getAllQuotes]);
 
+  // Combine address, city, state, zipcode
   const deliveryAddress =
     user.address1 + ", " + user.city + ", " + user.state + " " + user.zipcode;
 
@@ -57,9 +59,9 @@ export default function FuelQuoteItem({ user }) {
     let gallonRequestedFactor = 0;
     const state = user.state.toUpperCase();
 
-    // Get user quotes
+    // get user quotes only
     const userQuotes = quotes.filter(
-      (quote) => quote.author.name === user.name
+      (quote) => quote.author && quote.author.name && quote.author.name === user.name
     );
 
     const quotesLength = userQuotes.length;
@@ -142,6 +144,7 @@ export default function FuelQuoteItem({ user }) {
     }
   };
 
+  // buttonDisable = True if Gallons and Delivery_date have no data
   const buttonDisable =
     quoteInput.gallons.length === 0 || quoteInput.delivery_date.length === 0;
 
@@ -212,6 +215,7 @@ export default function FuelQuoteItem({ user }) {
               placeholder="yyyy-mm-dd"
               value={quoteInput.delivery_date}
               onChange={onChangeHandler}
+              // min={new Date().toISOString().split("T")[0]}
               required
             />
           </div>

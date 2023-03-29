@@ -43,7 +43,7 @@ export default function QuoteHistory() {
   const userQuotes = quotes.map((quote) => {
     // check if user is present
     if (user) {
-      if (quote.author.name === user.name) {
+      if (quote.author && quote.author.name === user.name) {
         return { ...quote, isCurrentUser: true };
       } else {
         return quote;
@@ -52,6 +52,7 @@ export default function QuoteHistory() {
       return { ...quote, isCurrentUser: false };
     }
   });
+  
   console.log(user);
 
   // function to request to get the user information

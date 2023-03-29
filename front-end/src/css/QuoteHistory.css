@@ -14,12 +14,12 @@ header #hero{
 	font-family: overpas-extraBold;
 	font-size: 20px;
 	line-height: 24px;
-	border: 1px solid #c04ae2;
+	border: 1px solid #009c04;
 	color: white;
 	padding-top: 23px;
 	padding-bottom: 23px;
 	padding-left: 22px;
-	background-color: #c04ae2 ;
+	background-color: #009c04 ;
 	border-radius: 5px 5px 0px 0px ;
 
 }
@@ -44,7 +44,7 @@ header #hero{
 
 td {
 
-	border: 1px solid purple; 
+	border: 1px solid rgb(0, 101, 0); 
 }
 
 td {
@@ -55,34 +55,34 @@ td {
 th.name {
 	text-align: left;
 	width: 20%;
-	border: 1px solid purple; 
+	border: 1px solid rgb(0, 101, 0); 
 
 }
 th.gallon {
 	width: 10%;
-	border: 1px solid purple; 
+	border: 1px solid rgb(0, 101, 0); 
 }
 th.customer {
-	border: 1px solid purple; 
+	border: 1px solid rgb(0, 101, 0); 
 
 }
 th.Delivery {
 	width: 35%;
-	border: 1px solid purple; 
+	border: 1px solid rgb(0, 101, 0); 
 }
 th.date {
 	width: 15%;
-	border: 1px solid purple; 
+	border: 1px solid rgb(0, 101, 0); 
 }
 header #fuel-form #table thead th:nth-child(5) {
 	width: 20%;
 }
 th.price {
-	border: 1px solid purple; 
+	border: 1px solid rgb(0, 101, 0); 
 	width : 9%;
 }
 th.amount {
-	border: 1px solid purple; 
+	border: 1px solid rgb(0, 101, 0); 
 	width : 13%;
 }
 
@@ -97,7 +97,7 @@ header #fuel-form #table th,td{
 .quote-history-labels{
 	position: sticky;
 	top: 0px;
-	background-color: #c04ae2;
+	background-color: #009c04;
 	color: white;
 }
 
