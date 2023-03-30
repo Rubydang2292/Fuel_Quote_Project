@@ -1,23 +1,23 @@
-import React, { useContext, useState } from "react";
+import React, {useContext, useState} from "react";
 import "../css/Register.css";
 
 import axios from "axios";
 import AppContext from "./AppContext";
-import { useNavigate } from "react-router";
+import {useNavigate} from "react-router";
 
 export default function Register() {
   const navigate = useNavigate();
-  const { dispatch } = useContext(AppContext);
+  const {dispatch}= useContext(AppContext);
 
-  const [userInput, setUserInput] = useState({
+  const [ userInput, setUserInput ] = useState({
     name: "",
     email: "",
     password: "",
   });
 
-  const [errorMessage, setErrorMessage] = useState(null);
+  const [ errorMessage, setErrorMessage ] = useState(null);
 
-  const [passwordShown, setPasswordShown] = useState(false);
+  const [ passwordShown, setPasswordShown ] = useState(false);
 
   const togglePassword = () => {
     setPasswordShown(!passwordShown);
@@ -43,13 +43,13 @@ export default function Register() {
 
       const response = await axios(options);
 
-      const { token, userName } = response.data.data;
+      const {token, userName} = response.data.data;
 
       localStorage.setItem("token", token);
 
       dispatch({
         type: "CURRENT_USER",
-        payload: { userName },
+        payload: {userName},
       });
 
       navigate("/");
@@ -68,7 +68,7 @@ export default function Register() {
   return (
     <div id="hero" className="container has-two-col">
       <div id="register">
-        <form id="register-form" onSubmit={onSubmitHandler}>
+        <form id="register-form" onSubmit={ onSubmitHandler }>
           <div id="form-name">
             <h2>Register Form</h2>
           </div>
