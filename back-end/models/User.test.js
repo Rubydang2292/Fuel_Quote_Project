@@ -4,7 +4,7 @@ const User = require('./User');
 
 describe('User model', () => {
   beforeAll(async () => {
-    await mongoose.connect(global.__MONGO_URI__, {
+    await mongoose.connect(process.env.DB_URI || 'mongodb://localhost/test', {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
