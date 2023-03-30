@@ -55,7 +55,7 @@ describe('Quote Model', () => {
       await quote.save();
     } catch (error) {
       expect(error).toHaveProperty('message');
-      expect(error.message).toMatch(/gallons must be required/);
+      expect(error.message).toMatch(/gallons is required/);
     }
   });
 });

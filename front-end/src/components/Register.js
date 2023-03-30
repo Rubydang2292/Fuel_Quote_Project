@@ -59,7 +59,7 @@ export default function Register() {
         payload: null,
       });
 
-      alert("succesfully registered, Please login to continue");
+      alert("Succesfully registered. Please login to continue.");
     } catch (error) {
       setErrorMessage(error.response.data.message);
     }

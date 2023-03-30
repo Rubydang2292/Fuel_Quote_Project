@@ -4,7 +4,7 @@ const quoteSchema = new mongoose.Schema({
     gallons: {
         type: Number,
         trim: true,
-        required: [true, 'gallons must be required']
+        required: [true, 'gallons is required']
     },
 
     delivery_address: {

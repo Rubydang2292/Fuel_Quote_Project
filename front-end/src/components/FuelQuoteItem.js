@@ -138,7 +138,7 @@ export default function FuelQuoteItem({ user }) {
       });
 
       setSubmitButton(false);
-      alert("succesfully quoted");
+      alert("Quote Created Successfully!");
     } catch (error) {
       console.log(error);
     }
@@ -150,10 +150,10 @@ export default function FuelQuoteItem({ user }) {
 
   const fuelQuoteError = [];
   if (quoteInput.gallons < 0) {
-    fuelQuoteError.push("Gallons should be a positive number");
+    fuelQuoteError.push("Gallons must be a positive number!");
   }
   if (new Date(quoteInput.delivery_date) < new Date()) {
-    fuelQuoteError.push("Deliver Date is not valid");
+    fuelQuoteError.push("Delivery Date is invalid!");
   }
 
   console.log(fuelQuoteError);

@@ -18,7 +18,7 @@ export default function Hero() {
                         {user.isAdmin ? (
                             <>
                                 <h1>
-                                    Thank you for using our application
+                                    Thank you for using our application!
                                 </h1>
                                 <h2>
                                     Ruby Dang - Zackary Delheimer - Jefferson Donis - Miguel Salamanca
@@ -37,7 +37,7 @@ export default function Hero() {
                                 {user.address1 && (
                                     <>
                                         <h1>
-                                            Thank you for using our application
+                                            Thank you for using our application!
                                         </h1>
                                         <h2>
                                             Ruby Dang - Zackary Delheimer - Jefferson Donis - Miguel Salamanca
@@ -60,7 +60,7 @@ export default function Hero() {
                     <div id="hero-left">
 
                         <h1>
-                            Assignment and Project Group 20
+                            Project Group 20
                         </h1>
                         <h2>
                             Ruby Dang - Zackary Delheimer - Jefferson Donis - Miguel Salamanca
