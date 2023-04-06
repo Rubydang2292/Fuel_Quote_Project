@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback, useContext } from "react";
+import React, {useEffect, useCallback, useContext} from "react";
 import "../css/QuoteHistory.css";
 
 import axios from "axios";
@@ -7,10 +7,10 @@ import AppContext from "./AppContext";
 import QuoteHistoryItems from "./QuoteHistoryItems";
 
 export default function QuoteHistory() {
-  const { state, dispatch } = useContext(AppContext);
+  const {state, dispatch} = useContext(AppContext);
 
   // get quotes and user in state
-  const { quotes, user } = state;
+  const {quotes, user} = state;
 
   // function to request to get all Quotes
   const getAllQuotes = useCallback(async () => {
@@ -49,7 +49,7 @@ export default function QuoteHistory() {
         return quote;
       }
     } else {
-      return { ...quote, isCurrentUser: false };
+      return { ...quote, isCurrentUser: false};
     }
   });
   

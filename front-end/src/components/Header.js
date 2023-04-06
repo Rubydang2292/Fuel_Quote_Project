@@ -1,14 +1,14 @@
-import React, { useContext } from "react";
+import React, {useContext} from "react";
 import AppContext from "./AppContext";
 import "../css/Header.css";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import imageToRender from "../../src/assets/images/logo_team_20.png";
 
 export default function Header() {
 
-  const { state, dispatch } = useContext(AppContext);
+  const {state, dispatch} = useContext(AppContext);
 
-  const { user } = state;
+  const {user} = state;
 
   console.log(user);
 
