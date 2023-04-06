@@ -15,9 +15,9 @@ export default function Register() {
     password: "",
   });
 
-  const [ errorMessage, setErrorMessage ] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(null);
 
-  const [ passwordShown, setPasswordShown ] = useState(false);
+  const [passwordShown, setPasswordShown] = useState(false);
 
   const togglePassword = () => {
     setPasswordShown(!passwordShown);
@@ -68,7 +68,7 @@ export default function Register() {
   return (
     <div id="hero" className="container has-two-col">
       <div id="register">
-        <form id="register-form" onSubmit={ onSubmitHandler }>
+        <form id="register-form" onSubmit={onSubmitHandler}>
           <div id="form-name">
             <h2>Register Form</h2>
           </div>
