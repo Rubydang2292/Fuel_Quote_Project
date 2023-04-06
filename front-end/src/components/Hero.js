@@ -1,5 +1,5 @@
-import React, { useContext } from 'react'
-import { Link } from 'react-router-dom';
+import React, {useContext} from 'react'
+import {Link} from 'react-router-dom';
 import '../css/Hero.css'
 import AppContext from './AppContext';
 
@@ -7,9 +7,9 @@ import AppContext from './AppContext';
 
 export default function Hero() {
 
-    const { state } = useContext(AppContext)
+    const {state} = useContext(AppContext)
 
-    const { user } = state
+    const {user} = state
     return (
         <div id="hero" className="container has-two-col">
             {user ? (
