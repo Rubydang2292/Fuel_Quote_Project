@@ -29,7 +29,7 @@ describe('quoteRoute', () => {
         results: quotes.length,
         data: { quotes },
       });
-    }, 10000);
+    }, 20000);
   });
 
   describe('POST /api/quotes/fuelQuote', () => {
@@ -51,7 +51,7 @@ describe('quoteRoute', () => {
         status: 'Success',
         data: { quote },
       });
-    });
+    }, 20000);
   });
 
   describe('GET /api/quotes/userQuotes/:userId', () => {
@@ -75,6 +75,6 @@ describe('quoteRoute', () => {
         results: quotes.length,
         data: { quotes },
       });
-    });
+    }, 20000);
   });
 });

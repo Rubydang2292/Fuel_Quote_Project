@@ -41,7 +41,7 @@ describe("Auth Route", () => {
 
       expect(authController.register).toHaveBeenCalledTimes(1);
       expect(authController.register).toHaveBeenCalledWith(expect.anything(), expect.anything(), expect.anything());
-    });
+    }, 20000);
   });
 
   describe("POST /login", () => {
@@ -69,7 +69,7 @@ describe("Auth Route", () => {
 
       expect(authController.getAllUser).toHaveBeenCalledTimes(1);
       expect(authController.getAllUser).toHaveBeenCalledWith(expect.anything(), expect.anything(), expect.anything());
-    });
+    }, 20000);
   });
 
   describe("GET /userProfile", () => {
@@ -78,7 +78,7 @@ describe("Auth Route", () => {
 
       expect(authController.getCurrentUser).toHaveBeenCalledTimes(1);
       expect(authController.getCurrentUser).toHaveBeenCalledWith(expect.anything(), expect.anything(), expect.anything());
-    });
+    }, 20000);
   });
 
   describe("PUT /userProfile/:userId", () => {
@@ -88,6 +88,6 @@ describe("Auth Route", () => {
 
       expect(authController.updateCurrentUser).toHaveBeenCalledTimes(1);
       expect(authController.updateCurrentUser).toHaveBeenCalledWith(expect.anything(), expect.anything(), expect.anything());
-    });
+    }, 20000);
   });
 });

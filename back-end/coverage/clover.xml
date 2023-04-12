@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1681342203075" clover="3.2.0">
-  <project timestamp="1681342203075" name="All files">
-    <metrics statements="149" coveredstatements="112" conditionals="20" coveredconditionals="16" methods="14" coveredmethods="8" elements="183" coveredelements="136" complexity="0" loc="149" ncloc="149" packages="6" files="12" classes="12"/>
+<coverage generated="1681343516821" clover="3.2.0">
+  <project timestamp="1681343516821" name="All files">
+    <metrics statements="149" coveredstatements="122" conditionals="20" coveredconditionals="16" methods="14" coveredmethods="11" elements="183" coveredelements="149" complexity="0" loc="149" ncloc="149" packages="6" files="12" classes="12"/>
     <package name="back-end">
       <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="jest-mongodb-config.js" path="/Users/rubydang/Documents/GitHub/Fuel_Quote_Project/back-end/jest-mongodb-config.js">
@@ -28,33 +28,33 @@
       </file>
     </package>
     <package name="back-end.controllers">
-      <metrics statements="60" coveredstatements="26" conditionals="6" coveredconditionals="3" methods="8" coveredmethods="2"/>
+      <metrics statements="60" coveredstatements="36" conditionals="6" coveredconditionals="3" methods="8" coveredmethods="5"/>
       <file name="authController.js" path="/Users/rubydang/Documents/GitHub/Fuel_Quote_Project/back-end/controllers/authController.js">
         <metrics statements="42" coveredstatements="22" conditionals="6" coveredconditionals="3" methods="5" coveredmethods="2"/>
-        <line num="1" count="2" type="stmt"/>
-        <line num="3" count="2" type="stmt"/>
-        <line num="5" count="2" type="stmt"/>
-        <line num="8" count="2" type="stmt"/>
-        <line num="9" count="4" type="stmt"/>
-        <line num="13" count="4" type="stmt"/>
-        <line num="16" count="2" type="stmt"/>
-        <line num="19" count="2" type="stmt"/>
-        <line num="25" count="2" type="stmt"/>
-        <line num="29" count="2" type="stmt"/>
-        <line num="30" count="4" type="stmt"/>
-        <line num="33" count="4" type="stmt"/>
-        <line num="35" count="4" type="cond" truecount="2" falsecount="0"/>
-        <line num="36" count="2" type="stmt"/>
-        <line num="37" count="2" type="stmt"/>
-        <line num="38" count="2" type="stmt"/>
-        <line num="44" count="2" type="cond" truecount="1" falsecount="1"/>
-        <line num="47" count="2" type="stmt"/>
-        <line num="50" count="2" type="stmt"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="30" count="2" type="stmt"/>
+        <line num="33" count="2" type="stmt"/>
+        <line num="35" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="36" count="1" type="stmt"/>
+        <line num="37" count="1" type="stmt"/>
+        <line num="38" count="1" type="stmt"/>
+        <line num="44" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="47" count="1" type="stmt"/>
+        <line num="50" count="1" type="stmt"/>
         <line num="67" count="0" type="stmt"/>
         <line num="68" count="0" type="stmt"/>
         <line num="69" count="0" type="stmt"/>
         <line num="73" count="0" type="stmt"/>
-        <line num="79" count="2" type="stmt"/>
+        <line num="79" count="1" type="stmt"/>
         <line num="80" count="0" type="stmt"/>
         <line num="81" count="0" type="stmt"/>
         <line num="82" count="0" type="cond" truecount="0" falsecount="2"/>
@@ -62,37 +62,37 @@
         <line num="84" count="0" type="stmt"/>
         <line num="96" count="0" type="stmt"/>
         <line num="102" count="0" type="stmt"/>
-        <line num="107" count="2" type="stmt"/>
+        <line num="107" count="1" type="stmt"/>
         <line num="108" count="0" type="stmt"/>
         <line num="110" count="0" type="stmt"/>
         <line num="112" count="0" type="stmt"/>
         <line num="114" count="0" type="stmt"/>
         <line num="119" count="0" type="stmt"/>
-        <line num="125" count="2" type="stmt"/>
+        <line num="125" count="1" type="stmt"/>
         <line num="126" count="0" type="stmt"/>
         <line num="129" count="0" type="stmt"/>
         <line num="132" count="0" type="stmt"/>
         <line num="142" count="0" type="stmt"/>
       </file>
       <file name="quoteController.js" path="/Users/rubydang/Documents/GitHub/Fuel_Quote_Project/back-end/controllers/quoteController.js">
-        <metrics statements="18" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
+        <metrics statements="18" coveredstatements="14" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
         <line num="11" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="24" count="1" type="stmt"/>
-        <line num="25" count="0" type="stmt"/>
-        <line num="26" count="0" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="24" count="2" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
         <line num="27" count="0" type="stmt"/>
         <line num="30" count="0" type="stmt"/>
-        <line num="36" count="0" type="stmt"/>
-        <line num="41" count="1" type="stmt"/>
-        <line num="42" count="0" type="stmt"/>
-        <line num="43" count="0" type="stmt"/>
-        <line num="45" count="0" type="stmt"/>
-        <line num="48" count="0" type="stmt"/>
+        <line num="36" count="1" type="stmt"/>
+        <line num="41" count="2" type="stmt"/>
+        <line num="42" count="1" type="stmt"/>
+        <line num="43" count="1" type="stmt"/>
+        <line num="45" count="1" type="stmt"/>
+        <line num="48" count="1" type="stmt"/>
         <line num="55" count="0" type="stmt"/>
       </file>
     </package>
@@ -160,19 +160,19 @@
       </file>
       <file name="User.js" path="/Users/rubydang/Documents/GitHub/Fuel_Quote_Project/back-end/models/User.js">
         <metrics statements="13" coveredstatements="12" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="2"/>
-        <line num="1" count="3" type="stmt"/>
-        <line num="2" count="3" type="stmt"/>
-        <line num="3" count="3" type="stmt"/>
-        <line num="5" count="3" type="stmt"/>
-        <line num="69" count="3" type="stmt"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="69" count="2" type="stmt"/>
         <line num="70" count="1" type="stmt"/>
         <line num="72" count="1" type="stmt"/>
         <line num="73" count="1" type="cond" truecount="1" falsecount="1"/>
         <line num="74" count="0" type="stmt"/>
         <line num="76" count="1" type="stmt"/>
         <line num="77" count="1" type="stmt"/>
-        <line num="82" count="3" type="stmt"/>
-        <line num="84" count="3" type="stmt"/>
+        <line num="82" count="2" type="stmt"/>
+        <line num="84" count="2" type="stmt"/>
       </file>
     </package>
     <package name="back-end.routes">
