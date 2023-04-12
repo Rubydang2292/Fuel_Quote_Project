@@ -1,3 +1,5 @@
+process.env.APP_SECRET = 'your-secret-key';
+
 const jwt = require('jsonwebtoken');
 const { checkCurrentUser } = require('../middlewares/checkCurrentUser');
 

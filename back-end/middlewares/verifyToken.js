@@ -1,20 +1,46 @@
+// const jwt = require('jsonwebtoken');
+
+// exports.verifyToken = (req, res, next) => {
+
+//     const Authorization = req.header('authorization');
+
+//     if (!Authorization){
+//         const err = new Error('Unauthorized');
+//         err.statusCode = 401;
+//         return next(err)
+//     };
+
+//     const token = Authorization.replace('Bearer ', '');
+
+//     const {userId} = jwt.verify(token, process.env.APP_SECRET);
+
+//     req.user = { userId };
+
+//     next()
+// }
+
+
+
+
+
 const jwt = require('jsonwebtoken');
 
 exports.verifyToken = (req, res, next) => {
+  const Authorization = req.header('Authorization');
 
-    const Authorization = req.header('authorization');
+  if (!Authorization) {
+    const error = new Error('Unauthorized');
+    error.statusCode = 401;
+    return next(error);
+  }
 
-    if (!Authorization){
-        const err = new Error('Unauthorized');
-        err.statusCode = 401;
-        return next(err)
-    };
+  const token = Authorization.replace('Bearer ', '');
 
-    const token = Authorization.replace('Bearer ', '');
-
-    const {userId} = jwt.verify(token, process.env.APP_SECRET);
-
+  try {
+    const { userId } = jwt.verify(token, process.env.APP_SECRET);
     req.user = { userId };
-
-    next()
-}
+    next();
+  } catch (err) {
+    next(err);
+  }
+};

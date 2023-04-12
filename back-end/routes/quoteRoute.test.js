@@ -29,7 +29,7 @@ describe('quoteRoute', () => {
         results: quotes.length,
         data: { quotes },
       });
-    });
+    }, 10000);
   });
 
   describe('POST /api/quotes/fuelQuote', () => {

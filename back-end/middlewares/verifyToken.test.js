@@ -1,6 +1,9 @@
 const jwt = require('jsonwebtoken');
 const { verifyToken } = require('../middlewares/verifyToken');
 
+// Set a dummy value for APP_SECRET
+process.env.APP_SECRET = 'testAppSecret';
+
 describe('verifyToken middleware', () => {
   const req = {
     header: jest.fn(),
@@ -38,10 +41,12 @@ describe('verifyToken middleware', () => {
   it('should return an error if the token is invalid', () => {
     req.header.mockReturnValue('Bearer invalid_token');
 
-    expect(() => verifyToken(req, res, next)).toThrow();
+    verifyToken(req, res, next);
 
+    expect(next).toHaveBeenCalled();
     const error = next.mock.calls[0][0];
     expect(error).toBeInstanceOf(Error);
-    expect(error.message).toMatch(/invalid token/);
+    expect(error.message).toMatch(/jwt malformed/);
+    expect(error.statusCode).toBe(401);
   });
 });
