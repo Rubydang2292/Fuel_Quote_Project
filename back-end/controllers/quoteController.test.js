@@ -1,57 +1,18 @@
-const quoteController = require('./quoteController');
-const Quote = require('../models/Quote');
+const authController = require('../controllers/authController');
+const User = require('../models/User');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
-jest.mock('../models/Quote');
+jest.mock('../models/User');
 
-describe('quoteController', () => {
-  describe('getAllQuotes', () => {
-    it('should return all quotes', async () => {
-      const req = {};
-      const res = {
-        status: jest.fn().mockReturnThis(),
-        json: jest.fn(),
-      };
-
-      const quotes = [
-        { _id: '1', text: 'Quote 1', author: { name: 'Author 1' } },
-        { _id: '2', text: 'Quote 2', author: { name: 'Author 2' } },
-      ];
-      Quote.find.mockResolvedValue(quotes);
-
-      await quoteController.getAllQuotes(req, res);
-
-      expect(Quote.find).toHaveBeenCalledWith({}).populate('author');
-      expect(res.status).toHaveBeenCalledWith(200);
-      expect(res.json).toHaveBeenCalledWith({
-        status: 'Success',
-        results: quotes.length,
-        data: { quotes },
-      });
-    });
-
-    it('should handle errors', async () => {
-      const req = {};
-      const res = {
-        json: jest.fn(),
-      };
-
-      const error = new Error('Database connection error');
-      Quote.find.mockRejectedValue(error);
-
-      const next = jest.fn();
-
-      await quoteController.getAllQuotes(req, res, next);
-
-      expect(next).toHaveBeenCalledWith(error);
-    });
-  });
-
-  describe('createOneQuote', () => {
-    it('should create a new quote', async () => {
+describe('authController', () => {
+  describe('register', () => {
+    it('should create a new user and return a token', async () => {
       const req = {
-        user: { userId: 'user-id' },
         body: {
-          text: 'Quote text',
+          name: 'John',
+          email: 'john@example.com',
+          password: 'password',
         },
       };
       const res = {
@@ -59,50 +20,108 @@ describe('quoteController', () => {
         json: jest.fn(),
       };
 
-      const quote = {
-        _id: 'quote-id',
-        text: 'Quote text',
-        author: 'user-id',
-      };
-      Quote.create.mockResolvedValue(quote);
+      User.create.mockResolvedValue({
+        _id: 'user-id',
+        name: 'John',
+        email: 'john@example.com',
+      });
 
-      await quoteController.createOneQuote(req, res);
+      jwt.sign = jest.fn().mockReturnValue('token');
 
-      expect(Quote.create).toHaveBeenCalledWith({ ...req.body, author: 'user-id' });
+      await authController.register(req, res);
+
+      expect(User.create).toHaveBeenCalledWith(req.body);
+      expect(jwt.sign).toHaveBeenCalledWith({ userID: 'user-id' }, process.env.APP_SECRET);
       expect(res.status).toHaveBeenCalledWith(200);
       expect(res.json).toHaveBeenCalledWith({
         status: 'Success',
-        data: { quote },
+        data: { token: 'token', userName: 'John' },
       });
     });
 
     it('should handle errors', async () => {
       const req = {
-        user: { userId: 'user-id' },
         body: {
-          text: 'Quote text',
+          name: 'John',
+          email: 'john@example.com',
+          password: 'password',
         },
       };
       const res = {
+        status: jest.fn().mockReturnThis(),
         json: jest.fn(),
       };
 
       const error = new Error('Database connection error');
-      Quote.create.mockRejectedValue(error);
+      User.create.mockRejectedValue(error);
 
       const next = jest.fn();
 
-      await quoteController.createOneQuote(req, res, next);
+      await authController.register(req, res, next);
 
       expect(next).toHaveBeenCalledWith(error);
     });
   });
 
-  describe('getUserQuotes', () => {
-    it('should return all quotes by a user', async () => {
+  describe('login', () => {
+    it('should return a token and user data if email and password are correct', async () => {
       const req = {
-        params: {
+        body: {
+          email: 'john@example.com',
+          password: 'password',
+        },
+      };
+      const res = {
+        status: jest.fn().mockReturnThis(),
+        json: jest.fn(),
+      };
+
+      const user = {
+        _id: 'user-id',
+        name: 'John',
+        email: 'john@example.com',
+        password: bcrypt.hashSync('password', 10),
+        address1: '123 Main St',
+        address2: '',
+        city: 'New York',
+        state: 'NY',
+        zipcode: '10001',
+        isAdmin: false,
+      };
+      User.findOne.mockResolvedValue(user);
+
+      jwt.sign = jest.fn().mockReturnValue('token');
+
+      await authController.login(req, res);
+
+      expect(User.findOne).toHaveBeenCalledWith({ email: 'john@example.com' });
+      expect(bcrypt.compareSync(req.body.password, user.password)).toBe(true);
+      expect(jwt.sign).toHaveBeenCalledWith(
+        { userId: 'user-id' },
+        process.env.APP_SECRET
+      );
+      expect(res.status).toHaveBeenCalledWith(200);
+      expect(res.json).toHaveBeenCalledWith({
+        status: 'Success',
+        data: {
+          token: 'token',
           userId: 'user-id',
+          name: 'John',
+          address1: '123 Main St',
+          address2: '',
+          city: 'New York',
+          state: 'NY',
+          zipcode: '10001',
+          isAdmin: false,
+        },
+      });
+    });
+
+    it('should return an error if email is not correct', async () => {
+      const req = {
+        body: {
+          email: 'john@example.com',
+          password: 'password',
         },
       };
       const res = {
@@ -110,21 +129,14 @@ describe('quoteController', () => {
         json: jest.fn(),
       };
 
-      const quotes = [
-        { _id: '1', text: 'Quote 1', author: { name: 'Author 1' } },
-        { _id: '2', text: 'Quote 2', author: { name: 'Author 2' } },
-      ];
-      Quote.find.mockResolvedValue(quotes);
+      User.findOne.mockResolvedValue(null);
 
-      await quoteController.getUserQuotes(req, res);
+      const next = jest.fn();
 
-      expect(Quote.find).toHaveBeenCalledWith({ author: 'user-id' });
-      expect(res.status).toHaveBeenCalledWith(200);
-      expect(res.json).toHaveBeenCalledWith({
-        status: 'Success',
-        results: quotes.length,
-        data: { quotes },
-      });
+      await authController.login(req, res, next);
+
+      const error = new Error('Email is not correct');
+      expect(next).toHaveBeenCalledWith(error);
     });
   });
 });

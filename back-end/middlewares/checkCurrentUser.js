@@ -1,3 +1,12 @@
+// adjust for unit tests
+// module.exports = (req, res, next) => {
+//     if (!req.headers.authorization) {
+//       req.user = null;
+//       return next();
+//     }
+    // end adjust for unit tests
+
+
 const jwt = require('jsonwebtoken');
 
 exports.checkCurrentUser = (req, res, next) => {
