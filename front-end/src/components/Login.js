@@ -125,7 +125,7 @@ export default function Login() {
             </div>
 
             <div id="signup">
-              <p>New to ROU?</p>
+              <p>New User?</p>
               <Link to="/Register">Create an account</Link>
             </div>
           </div>

@@ -6,6 +6,9 @@ const jwt = require('jsonwebtoken');
 jest.mock('../models/User');
 
 describe('authController', () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
   describe('register', () => {
     it('should create a new user and return a token', async () => {
       const req = {
@@ -139,4 +142,130 @@ describe('authController', () => {
       expect(next).toHaveBeenCalledWith(error);
     });
   });
+
+  describe('getCurrentUser', () => {
+    it('should return the current user data', async () => {
+      const req = {
+        user: {
+          userId: 'user-id',
+        },
+      };
+      const res = {
+        status: jest.fn().mockReturnThis(),
+        json: jest.fn(),
+      };
+
+      const user = {
+        _id: 'user-id',
+        name: 'John',
+        email: 'john@example.com',
+        address1: '123 Main St',
+        address2: '',
+        city: 'New York',
+        state: 'NY',
+        zipcode: '10001',
+        isAdmin: false,
+      };
+      User.findOne.mockResolvedValue(user);
+
+      await authController.getCurrentUser(req, res);
+
+      expect(User.findOne).toHaveBeenCalledWith({ _id: 'user-id' });
+      expect(res.status).toHaveBeenCalledWith(200);
+      expect(res.json).toHaveBeenCalledWith({
+        status: 'success',
+        data: {
+          user: {
+            userId: 'user-id',
+            address1: '123 Main St',
+            address2: '',
+            city: 'New York',
+            state: 'NY',
+            zipcode: '10001',
+            name: 'John',
+            isAdmin: false,
+          },
+        },
+      });
+    });
+});
+
+describe('updateCurrentUser', () => {
+  it('should update the current user and return the updated profile', async () => {
+    const req = {
+      params: { userId: 'user-id' },
+      body: {
+        address1: '456 Main St',
+      },
+    };
+    const res = {
+      status: jest.fn().mockReturnThis(),
+      json: jest.fn(),
+    };
+
+    const user = {
+      _id: 'user-id',
+      address1: '456 Main St',
+      address2: '',
+      city: 'New York',
+      state: 'NY',
+      zipcode: '10001',
+      name: 'John',
+      isAdmin: false,
+    };
+    User.findByIdAndUpdate.mockResolvedValue(user);
+
+    await authController.updateCurrentUser(req, res);
+
+    expect(User.findByIdAndUpdate).toHaveBeenCalledWith(
+      'user-id',
+      { ...req.body },
+      { new: true, runValidators: true }
+    );
+    expect(res.status).toHaveBeenCalledWith(200);
+    expect(res.json).toHaveBeenCalledWith({
+      status: 'success',
+      data: { userProfile: user },
+    });
+  });
+});
+
+
+describe('getAllUser', () => {
+  it('should return all users', async () => {
+    const req = {};
+    const res = {
+      status: jest.fn().mockReturnThis(),
+      json: jest.fn(),
+    };
+
+    const users = [
+      {
+        _id: 'user1',
+        name: 'John',
+        email: 'john@example.com',
+      },
+      {
+        _id: 'user2',
+        name: 'Jane',
+        email: 'jane@example.com',
+      },
+    ];
+
+    User.find.mockResolvedValue(users);
+
+    await authController.getAllUser(req, res);
+
+    expect(User.find).toHaveBeenCalledWith({});
+    expect(res.status).toHaveBeenCalledWith(200);
+    expect(res.json).toHaveBeenCalledWith({
+      status: 'Success',
+      results: users.length,
+      data: {
+        userId: users._id,
+        users,
+      },
+    });
+  });
+});
 });

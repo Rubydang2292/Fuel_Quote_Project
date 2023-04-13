@@ -7,15 +7,11 @@ const bcrypt = require('bcryptjs');
 // Have to use async/await because of connecting with database
 exports.register = async (req, res, next) => {
     try {
-
-        // req.body has name, email, password which user inputs it.
-        // Use these data to create a user in DB ( using create() )
         const user = await User.create(req.body)
 
         // Create TOKEN after register
         const token = jwt.sign({ userID: user._id }, process.env.APP_SECRET);
 
-        // response back to client if successfully connect to DB
         res.status(200).json({
             status: 'Success',
             data: { token, userName: user.name }
@@ -28,8 +24,6 @@ exports.register = async (req, res, next) => {
 
 exports.login = async (req, res, next) => {
     try {
-
-        // Find user email with parameter is information when user inputs in the form
         const user = await User.findOne({ email: req.body.email })
 
         if (!user) {
@@ -63,7 +57,6 @@ exports.login = async (req, res, next) => {
             });
 
         } else {
-            // Error: Password is not correct.
             const err = new Error('Password is not correct')
             err.statusCode = 400;
             return next(err) // send this error to errorHandler
