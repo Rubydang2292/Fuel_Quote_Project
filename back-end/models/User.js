@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const { db } = require("./Quote");
+const emailRegex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -16,6 +17,12 @@ const userSchema = new mongoose.Schema({
     unique: true,
     trim: true,
     required: [true, "Email is required"],
+    validate: {
+      validator: function (email) {
+        return emailRegex.test(email);
+      },
+      message: "Please enter a valid email address",
+    },
   },
 
   password: {

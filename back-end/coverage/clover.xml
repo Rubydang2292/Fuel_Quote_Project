@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1681345611842" clover="3.2.0">
-  <project timestamp="1681345611842" name="All files">
-    <metrics statements="149" coveredstatements="135" conditionals="20" coveredconditionals="17" methods="14" coveredmethods="14" elements="183" coveredelements="166" complexity="0" loc="149" ncloc="149" packages="6" files="12" classes="12"/>
+<coverage generated="1681773502636" clover="3.2.0">
+  <project timestamp="1681773502636" name="All files">
+    <metrics statements="151" coveredstatements="137" conditionals="20" coveredconditionals="17" methods="15" coveredmethods="15" elements="186" coveredelements="169" complexity="0" loc="151" ncloc="151" packages="6" files="12" classes="12"/>
     <package name="back-end">
       <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="jest-mongodb-config.js" path="/Users/rubydang/Documents/GitHub/Fuel_Quote_Project/back-end/jest-mongodb-config.js">
@@ -150,7 +150,7 @@
       </file>
     </package>
     <package name="back-end.models">
-      <metrics statements="17" coveredstatements="16" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="2"/>
+      <metrics statements="19" coveredstatements="18" conditionals="2" coveredconditionals="1" methods="3" coveredmethods="3"/>
       <file name="Quote.js" path="/Users/rubydang/Documents/GitHub/Fuel_Quote_Project/back-end/models/Quote.js">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="5" type="stmt"/>
@@ -159,20 +159,22 @@
         <line num="40" count="5" type="stmt"/>
       </file>
       <file name="User.js" path="/Users/rubydang/Documents/GitHub/Fuel_Quote_Project/back-end/models/User.js">
-        <metrics statements="13" coveredstatements="12" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <metrics statements="15" coveredstatements="14" conditionals="2" coveredconditionals="1" methods="3" coveredmethods="3"/>
         <line num="1" count="2" type="stmt"/>
         <line num="2" count="2" type="stmt"/>
         <line num="3" count="2" type="stmt"/>
-        <line num="5" count="2" type="stmt"/>
-        <line num="69" count="2" type="stmt"/>
-        <line num="70" count="1" type="stmt"/>
-        <line num="72" count="1" type="stmt"/>
-        <line num="73" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="74" count="0" type="stmt"/>
-        <line num="76" count="1" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="76" count="2" type="stmt"/>
         <line num="77" count="1" type="stmt"/>
-        <line num="82" count="2" type="stmt"/>
-        <line num="84" count="2" type="stmt"/>
+        <line num="79" count="1" type="stmt"/>
+        <line num="80" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="81" count="0" type="stmt"/>
+        <line num="83" count="1" type="stmt"/>
+        <line num="84" count="1" type="stmt"/>
+        <line num="89" count="2" type="stmt"/>
+        <line num="91" count="2" type="stmt"/>
       </file>
     </package>
     <package name="back-end.routes">
