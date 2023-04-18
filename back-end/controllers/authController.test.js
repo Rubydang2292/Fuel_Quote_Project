@@ -141,6 +141,55 @@ describe('authController', () => {
       const error = new Error('Email is not correct');
       expect(next).toHaveBeenCalledWith(error);
     });
+
+
+    it('should return an error if password is not correct', async () => {
+      const req = {
+        body: {
+          email: 'john@example.com',
+          password: 'wrongpassword',
+        },
+      };
+      const res = {
+        status: jest.fn().mockReturnThis(),
+        json: jest.fn(),
+      };
+  
+      const user = {
+        _id: 'user-id',
+        name: 'John',
+        email: 'john@example.com',
+        password: bcrypt.hashSync('password', 10),
+      };
+      User.findOne.mockResolvedValue(user);
+  
+      const next = jest.fn();
+  
+      await authController.login(req, res, next);
+  
+      const error = new Error('Password is not correct');
+      expect(next).toHaveBeenCalledWith(error);
+    });
+  
+    it('should handle errors', async () => {
+      const req = {
+        body: {
+          email: 'john@example.com',
+          password: 'password',
+        },
+      };
+      const res = {
+        status: jest.fn().mockReturnThis(),
+        json: jest.fn(),
+      };
+  
+      const error = new Error('Database connection error');
+      User.findOne.mockRejectedValue(error);
+  
+      await authController.login(req, res);
+  
+      expect(res.json).toHaveBeenCalledWith(error);
+    });
   });
 
   describe('getCurrentUser', () => {

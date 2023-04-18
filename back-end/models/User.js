@@ -67,10 +67,6 @@ const userSchema = new mongoose.Schema({
     maxlength: [9, "Zipcode must have a maximum of 9 characters"],
   },
 
-  // isAdmin: {
-  //   type: String,
-  //   trim: true,
-  // },
 });
 
 userSchema.pre("save", function (next) {

@@ -116,7 +116,6 @@ export default function QuoteHistory() {
               </tr>
             </thead>
 
-            {/* If user is admin, print all quotes history */}
             {user ? (
               <>
                 {user.isAdmin ? (
@@ -126,7 +125,6 @@ export default function QuoteHistory() {
                     ))}
                   </>
                 ) : (
-                  // If user is not admin, print quotes history according to user name
                   <>
                     {userQuotes.map(
                       (quote) =>

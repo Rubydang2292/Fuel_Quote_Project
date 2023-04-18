@@ -8,7 +8,6 @@ export default function UserProfile() {
   const { state, dispatch } = useContext(AppContext);
   const { user } = state;
 
-  // Function to get the user information
   const getCurrentUser = useCallback(async () => {
     try {
       const token = localStorage.getItem("token");

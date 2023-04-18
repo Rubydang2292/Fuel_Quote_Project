@@ -19,7 +19,6 @@ exports.getAllQuotes = async (req, res, next) =>{
     }
 };
 
-
 // Create one quote
 exports.createOneQuote = async (req, res, next) => {
     try {

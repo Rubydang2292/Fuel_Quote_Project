@@ -144,7 +144,6 @@ export default function FuelQuoteItem({ user }) {
     }
   };
 
-  // buttonDisable = True if Gallons and Delivery_date have no data
   const buttonDisable =
     quoteInput.gallons.length === 0 || quoteInput.delivery_date.length === 0;
 

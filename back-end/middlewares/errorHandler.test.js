@@ -9,7 +9,7 @@ describe('errorHandler middleware', () => {
   });
 
   it('should handle a generic error', () => {
-    const err = new Error('Test error');
+    const err = new Error('Test Error');
     const res = {
       status: jest.fn().mockReturnThis(),
       json: jest.fn(),
@@ -18,7 +18,7 @@ describe('errorHandler middleware', () => {
     errorHandler(err, req, res, next);
 
     expect(res.status).toHaveBeenCalledWith(500);
-    expect(res.json).toHaveBeenCalledWith({ status: 'fail', message: 'Test error' });
+    expect(res.json).toHaveBeenCalledWith({ status: 'Fail', message: 'Test Error' });
   });
 
   it('should handle a duplicate key error', () => {
@@ -34,7 +34,7 @@ describe('errorHandler middleware', () => {
     errorHandler(err, req, res, next);
 
     expect(res.status).toHaveBeenCalledWith(400);
-    expect(res.json).toHaveBeenCalledWith({ status: 'fail', message: 'email has been used already' });
+    expect(res.json).toHaveBeenCalledWith({ status: 'fail', message: 'The email has been used already!' });
   });
 
   it('should handle a validation error', () => {

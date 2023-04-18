@@ -5,7 +5,7 @@ exports.errorHandler = (err, req, res, next) => {
   if (err.code === 11000) {
     err.statusCode = 400;
     for (let p in err.keyValue) {
-      err.message = `${p} has been used already`;
+      err.message = `The ${p} has been used already`;
     }
   }
 

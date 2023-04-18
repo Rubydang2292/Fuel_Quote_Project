@@ -71,8 +71,6 @@ describe('quoteController', () => {
     expect(Quote.find).toHaveBeenCalledWith({ author: mockUserId });
   });
 
-
-
   test('getAllQuotes with error', async () => {
     const mockError = new Error('Error finding quotes');
     Quote.find.mockRejectedValue(mockError);
