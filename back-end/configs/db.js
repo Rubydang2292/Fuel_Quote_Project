@@ -1,6 +1,9 @@
 // npm install mongoose
 const mongoose = require('mongoose');
 
+// to suppress the deprecation warning
+mongoose.set('strictQuery', true);
+
 // function to connect the database
 const connectDB = async () => {
     try {

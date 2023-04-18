@@ -10,6 +10,7 @@ export default function UserProfileItem({ user }) {
   const [userToEdit, setUserToEdit] = useState(user);
 
   const [errorMessage, setErrorMessage] = useState(null);
+  const [stateErrorMessage, setStateErrorMessage] = useState(null);
 
   const updateCurrentUser = async (e) => {
     e.preventDefault();
@@ -195,7 +196,7 @@ export default function UserProfileItem({ user }) {
                         }
                         required
                       >
-                        <option selected hidden>
+                        <option value="" hidden>
                           Choose...
                         </option>
                         <option>AA</option>
@@ -252,6 +253,9 @@ export default function UserProfileItem({ user }) {
                         <option>WI</option>
                         <option>WY</option>
                       </select>
+                      {stateErrorMessage && (
+                        <div className="error-message">{stateErrorMessage}</div>
+                      )}
                     </div>
 
                     <div id="zipcode">

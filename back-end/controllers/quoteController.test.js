@@ -70,4 +70,43 @@ describe('quoteController', () => {
     });
     expect(Quote.find).toHaveBeenCalledWith({ author: mockUserId });
   });
+
+
+
+  test('getAllQuotes with error', async () => {
+    const mockError = new Error('Error finding quotes');
+    Quote.find.mockRejectedValue(mockError);
+
+    const res = await request(app).get('/quotes');
+
+    expect(res.statusCode).toBe(500);
+    expect(res.body).toEqual(mockError);
+  });
+
+  test('createOneQuote with error', async () => {
+    const mockError = new Error('Error creating quote');
+    Quote.create.mockRejectedValue(mockError);
+
+    const reqBody = { text: 'Test quote' };
+
+    const res = await request(app).post('/quotes').send(reqBody);
+
+    expect(res.statusCode).toBe(500);
+    expect(res.body).toEqual(mockError);
+  });
+
+  test('getUserQuotes with error', async () => {
+    const mockUserId = 'user1';
+    const mockError = new Error('Error finding user quotes');
+    Quote.find.mockRejectedValue(mockError);
+
+    const res = await request(app).get(`/quotes/user/${mockUserId}`);
+
+    expect(res.statusCode).toBe(500);
+    expect(res.body).toEqual(mockError);
+  });
+
 });
+
+
+
